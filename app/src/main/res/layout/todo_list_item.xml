@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+
+    android:layout_margin="5dp"
+    android:id="@+id/accordian_title"
+    app:cardUseCompatPadding="true">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        >
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_arrow_icon"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/task_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:maxLines="1"
+            android:text="go to bed"
+            android:ellipsize="end"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="20sp"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/accordian_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:visibility="gone"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:id="@+id/task_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Description at 12 pm"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="10dp"
+            android:ellipsize="end"
+            android:layout_marginTop="5dp"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/task_description"
+            android:id="@+id/delete_btn"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_delete_icon"
+            />
+
+        <ImageView
+            android:id="@+id/edit_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/delete_btn"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_edit_icon"
+            android:layout_centerVertical="true"
+            />
+
+        <ImageView
+            android:id="@+id/done_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_done_icon"
+            android:layout_toLeftOf="@id/edit_btn"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

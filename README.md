@@ -52,7 +52,7 @@ var name = "saura";
 console.log(name);
 
 ```
-//
+
 Tables
 |Table|Goes|ere|
 |----- |----- |----- |

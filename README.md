@@ -21,10 +21,14 @@ ToDo Register Page             |  ToDo Login Page
  <img src="images/register_page.jpg" alt="drawing" width="250"/>  | <img src="images/login_page.jpg" alt="drawing" width="250"/>
 
 
-ToDo Register Page             |  ToDo Login Page          | Todo naughty
-:-------------------------:|:-------------------------:|:-------------------------:
 
-<img src="images/register_page.jpg" alt="drawing" width="250"/>  | <img src="images/login_page.jpg" alt="drawing" width="250"/>
+### Now we will add some task
+
+ToDo App Navigation             |  Add Task todo          | Task Added todo
+:-------------------------:|:-------------------------:|:-------------------------:
+ <img src="images/todo_app.jpg" alt="drawing" width="250"/>  | <img src="images/add_task.jpg" alt="drawing" width="250"/> | <img src="images/task_added.jpg" alt="drawing" width="250"/>
+
+
 
 # heading 1
 ## heading 2

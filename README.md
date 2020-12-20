@@ -16,7 +16,7 @@
 
 ### Firstly you have to login or register to our app with right email and password.
 
-![](images/todo_register_page.jpg) ![](images/todo_login_page.jpg)
+![](images/todo_splash_screen.jpg) 
 
 
 

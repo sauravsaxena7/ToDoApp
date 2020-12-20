@@ -1,9 +1,13 @@
 # ToDoApp With REST API
 
 
->In ToDO Application we use Rest Api as backend. This REST API is build in NodeJs,ExpressJs and Mongodb . IDE VISUAL STDIO CODE and the API tested on Postman
+>In ToDO Application we use Rest Api as backend. This REST API is build in NodeJs,ExpressJs and Mongodb . IDE VISUAL STDIO CODE and the API tested on 
+
+### REST API Link
+
 
 >For Android Application Development we use IDE ANDROID STDIO and java.
+
 
 
 ## Features Of Application
@@ -20,7 +24,7 @@ ToDo Register Page             |  ToDo Login Page
 :-------------------------:|:-------------------------:
  <img src="images/register_page.jpg" alt="drawing" width="250"/>  | <img src="images/login_page.jpg" alt="drawing" width="250"/>
 
-//
+
 
 ### Now we will add some task
 
@@ -35,44 +39,22 @@ ToDo Udate Task             |  Change to new todo          | Task Updated
  <img src="images/update_task.jpg" alt="drawing" width="250"/>  | <img src="images/to_update_task.jpg" alt="drawing" width="250"/> | <img src="images/task_update.jpg" alt="drawing" width="250"/>
 
 
-# heading 1
-## heading 2
 
-_italics_
 
-**strongs**
+ Deletion in progress             |  TODO Deleted
+:-------------------------:|:-------------------------:
+ <img src="images/delete2.jpg" alt="drawing" width="250"/>  | <img src="images/delete1.jpg" alt="drawing" width="250"/>
 
-~~100000~~ **999**
 
-links
+### Finished ToDo List
 
-[Visit website](https://learncodeonline.in "LCO")
+Move to Finished Task             |  Task is finished now
+:-------------------------:|:-------------------------:
+ <img src="images/move1.jpg" alt="drawing" width="250"/>  | <img src="images/move2.jpg" alt="drawing" width="250"/>
 
-Images
 
-![LCO](https://learncodeonline.in/mascot.png "LCO")
 
-use `for` loop
+### This is how you can use our software
 
-``` javascript
-
-var name = "saura";
-console.log(name);
-
-```
-
-Tables
-|Table|Goes|ere|
-|----- |----- |----- |
-| one  | two  | three |
-
->keep ssmilling and work harder
-
-1. list one 
-2. list two
-1. list three
-4. List four
-   
-- List four
 
 ***

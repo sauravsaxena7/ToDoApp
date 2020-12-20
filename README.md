@@ -16,11 +16,10 @@
 
 ### Firstly you have to login or register to our app with right email and password.
 
-ToDo Register Page             |  ToDo Login Page
-:-------------------------:|:-------------------------:
- <img src="images/register_page.jpg" alt="drawing" width="250"/>  | <img src="images/login_page.jpg" alt="drawing" width="250"/>
 
-
+ToDo Splash Screen             |  ToDo Register Screen         |  ToDo Login Screen 
+:-------------------------:|:-------------------------::-------------------------:
+<img src="images/todo_splash_screen.jpg" alt="drawing" width="250"/>  | <img src="images/register_page.jpg" alt="drawing" width="250"/>|<img src="images/login_page.jpg" alt="drawing" width="250"/>
 
 # heading 1
 ## heading 2

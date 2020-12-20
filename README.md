@@ -18,7 +18,9 @@
 
 
 
-<img src="images/add_task.jpg" alt="drawing" width="250"/>
+<img src="images/register_page.jpg" alt="drawing" width="250"/> 
+<img src="images/login_page.jpg" alt="drawing" width="250"/>
+
 
 
 

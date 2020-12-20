@@ -14,7 +14,12 @@
 
 &rarr; And this app will definitely help you todo your works on very right time.
 
-### Firstly you have to login or register to our with right credentials.
+### Firstly you have to login or register to our app with right email and password.
+
+![](images/todo_register_page.jpg) ![](images/todo_login_page.jpg)
+
+
+
 
 
 

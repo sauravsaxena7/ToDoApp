@@ -16,9 +16,9 @@
 
 ### Firstly you have to login or register to our app with right email and password.
 
-![](images/todo_splash_screen.jpg) 
 
 
+<img src="images/add_task.jpg" alt="drawing" width="250"/>
 
 
 

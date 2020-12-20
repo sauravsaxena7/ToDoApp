@@ -41,6 +41,7 @@ public class Todo_List_Adapters extends RecyclerView.Adapter<Todo_List_Adapters.
         final MyViewHolder myViewHolder= new MyViewHolder(view);
 
 
+
         int[] androidColors = view.getResources().getIntArray(R.array.androidcolors);
         int randomColors = androidColors[new Random().nextInt(androidColors.length)];
 
@@ -68,6 +69,16 @@ public class Todo_List_Adapters extends RecyclerView.Adapter<Todo_List_Adapters.
         final String title = arrayList.get(position).getTitle();
         final String description = arrayList.get(position).getDescription();
         final String id = arrayList.get(position).getId();
+
+        if(arrayList.get(position).isFinished()){
+            holder.done_btn.setVisibility(View.GONE);
+            holder.edit_btn.setVisibility(View.GONE);
+            holder.delete_btn.setVisibility(View.VISIBLE);
+        }else{
+            holder.done_btn.setVisibility(View.VISIBLE);
+            holder.edit_btn.setVisibility(View.VISIBLE);
+            holder.delete_btn.setVisibility(View.VISIBLE);
+        }
 
         holder.title_tv.setText(title);
         if(!description.equals("")){

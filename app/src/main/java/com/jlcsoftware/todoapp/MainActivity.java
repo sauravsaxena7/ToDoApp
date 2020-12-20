@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.jlcsoftware.todoapp.UtilsService.SharedPreferencesClass;
@@ -29,7 +30,11 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
+
     private NavigationView navigationView;
+
+    private TextView username_tv,email_tv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //View headerView = navigationView.getHeaderView(0);
+        //email_tv = headerView.findViewById(R.id.user_name);
+        //email_tv.setText("saurav sumannnnnnnnnnnn");
 
         initializeDrawber();
 
@@ -65,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
+
+
 
         ft.replace(R.id.content1,new HomeFragment());
 

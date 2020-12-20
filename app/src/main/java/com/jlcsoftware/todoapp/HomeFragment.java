@@ -57,6 +57,9 @@ public class HomeFragment extends Fragment implements RecyclerViewClickListener 
     private SharedPreferencesClass sharedPreferencesClass;
     private String token;
 
+
+
+
     private RecyclerView recyclerView;
     private TextView empty_tv;
     private ProgressBar progressBar;
@@ -65,6 +68,8 @@ public class HomeFragment extends Fragment implements RecyclerViewClickListener 
     ArrayList<TodoModel> arrayList;
 
     private Todo_List_Adapters todo_list_adapters;
+
+
 
     public HomeFragment() {
 
@@ -140,7 +145,9 @@ public class HomeFragment extends Fragment implements RecyclerViewClickListener 
                             TodoModel todoModel =new TodoModel(
                                     jsonObject.getString("_id"),
                                     jsonObject.getString("title"),
-                                    jsonObject.getString("description")
+                                    jsonObject.getString("description"),
+                                    jsonObject.getBoolean("finished")
+
 
                             );
                             arrayList.add(todoModel);
@@ -172,23 +179,35 @@ public class HomeFragment extends Fragment implements RecyclerViewClickListener 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(),error.toString(), Toast.LENGTH_SHORT).show();
+
 
                 NetworkResponse response = error.networkResponse;
-                if(error instanceof ServerError && response!=null){
+                if(error == null || error.networkResponse == null){
+                    return;
+                }
 
-                    try{
-                        String res = new String(response.data, HttpHeaderParser.parseCharset(response.headers,"utf-8"));
-                        JSONObject object = new JSONObject(res);
-                        progressBar.setVisibility(View.GONE);
-                        Toast.makeText(getActivity(),object.getString("msg"), Toast.LENGTH_SHORT).show();
-                    }catch (JSONException | UnsupportedEncodingException e){
-                        e.printStackTrace();
-                        progressBar.setVisibility(View.GONE);
+                String body;
 
+                //final String statusCode = String.valueOf(error.networkResponse.statusCode);
+
+                try {
+                    body = new String(error.networkResponse.data,"UTF-8");
+                    JSONObject errorObject = new JSONObject(body);
+
+                    if (errorObject.getString("msg").equals("Token not valid")){
+                        sharedPreferencesClass.clear();
+                        startActivity(new Intent(getActivity(),LoginActivity.class));
+                        getActivity().finish();
                     }
 
+                    Toast.makeText(getActivity(), "Session Expired", Toast.LENGTH_SHORT).show();
+
+                }catch (UnsupportedEncodingException | JSONException e){
+
                 }
+
+
+
 
             }
         }){
@@ -477,8 +496,46 @@ public class HomeFragment extends Fragment implements RecyclerViewClickListener 
 
     }
 
+
+
     private void showDeleteDialog(final String id,final int position) {
 
+
+
+        final AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                .setTitle("Are you sure to delete this task")
+                .setPositiveButton("YES",null)
+                .setNegativeButton("NO",null)
+                .create();
+
+
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                Button positive_btn = ((AlertDialog)dialog).getButton(AlertDialog.BUTTON_POSITIVE);
+
+                positive_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // Toast.makeText(getActivity(), "Positive Button", Toast.LENGTH_SHORT).show();
+
+                        dialog.dismiss();
+                        Delete_Todo(id,position);
+
+                    }
+                });
+
+            }
+        });
+
+        dialog.show();
+
+    }
+
+
+    //deleted todo method
+
+    private void Delete_Todo(final String id,final int position){
 
         String url="https://todoappst.herokuapp.com/api/todo/"+id;
 
@@ -513,14 +570,101 @@ public class HomeFragment extends Fragment implements RecyclerViewClickListener 
     }
 
 
+
+
+
+
+    //get all finished todo task method
     @Override
     public void onDoneButtonClick(int position) {
+        showFinishedDialog(arrayList.get(position).getId(),position);
+    }
 
-        Toast.makeText(getActivity(), "position onDoneButtonClick"+position, Toast.LENGTH_SHORT).show();
+    private void showFinishedDialog(final String id, final int position) {
+
+
+        final AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                .setTitle("Moved to finished task")
+                .setPositiveButton("YES",null)
+                .setNegativeButton("NO",null)
+                .create();
+
+
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                Button positive_btn = ((AlertDialog)dialog).getButton(AlertDialog.BUTTON_POSITIVE);
+
+                positive_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // Toast.makeText(getActivity(), "Positive Button", Toast.LENGTH_SHORT).show();
+
+                        dialog.dismiss();
+                        updateToFinishedTodo(id,position);
+
+                    }
+                });
+
+            }
+        });
+
+        dialog.show();
+
 
     }
 
+    //update to finished task
+    private void updateToFinishedTodo(String id, final int position){
 
+        String url = "https://todoappst.herokuapp.com/api/todo/"+id;
+
+        Map body = new HashMap();
+        body.put("finished",true);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(body), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    if(response.getBoolean("success")){
+
+                        arrayList.remove(position);
+
+                        getTask();
+
+                        todo_list_adapters.notifyItemRemoved(position);
+                        Toast.makeText(getActivity(), "Task finished", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getActivity(), ""+error.toString(), Toast.LENGTH_SHORT).show();
+
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+
+                HashMap<String,String> params = new HashMap<>();
+                params.put("Content-Type","application/json");
+                return params;
+            }
+        };
+
+        jsonObjectRequest
+                .setRetryPolicy(new DefaultRetryPolicy(10000,
+                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+
+        requestQueue.add(jsonObjectRequest);
+    }
 
 
 }

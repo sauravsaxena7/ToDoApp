@@ -1,5 +1,27 @@
 # ToDoApp With REST API
-todo app with rest api
+
+
+>In ToDO Application we use Rest Api as backend. This REST API is build in NodeJs,ExpressJs and Mongodb . IDE VISUAL STDIO CODE and the API tested on Postman
+
+>For Android Application Development we use IDE ANDROID STDIO and java.
+
+
+## Features Of Application
+
+&rarr; ToDo App handles your daily routine. some times you forgot to do your works.
+
+&rarr; Our App is very concern about your precious time. 
+
+&rarr; And this app will definitely help you todo your works on very right time.
+
+### Firstly you have to login or register to our with right credentials.
+
+
+
+
+
+
+
 # heading 1
 ## heading 2
 
